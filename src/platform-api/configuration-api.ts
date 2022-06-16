@@ -1,6 +1,8 @@
 import { ReapitConnectSession } from '@reapit/connect-session'
 import { ListItemModel } from '@reapit/foundations-ts-definitions'
+import { useQuery } from 'react-query'
 import { URLS, BASE_HEADERS } from '../constants/api'
+import { Axios } from '../core/axios'
 
 export const configurationAppointmentsApiService = async (
   session: ReapitConnectSession | null,
@@ -25,5 +27,18 @@ export const configurationAppointmentsApiService = async (
   } catch (err) {
     const error = err as Error
     console.error('Error fetching Configuration Appointment Types', error.message)
+  }
+}
+
+export const useFetchConfiguration = () => {
+  const getDocumentTypes = () => {
+    return useQuery('document-types', async () => {
+      const { data } = await Axios.get<ListItemModel[]>(URLS.CONFIGURATION_DOCUMENT_TYPES)
+      return data
+    })
+  }
+
+  return {
+    getDocumentTypes,
   }
 }

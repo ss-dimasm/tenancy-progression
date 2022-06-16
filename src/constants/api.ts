@@ -4,5 +4,10 @@ export const BASE_HEADERS = {
 }
 
 export const URLS = {
+  CONFIGURATION_DOCUMENT_TYPES: '/configuration/documentTypes',
   CONFIGURATION_APPOINTMENT_TYPES: '/configuration/appointmentTypes',
+
+  PROPERTIES: '/properties/',
+  TENANCIES: '/tenancies/',
+  DOCUMENTS: '/documents/',
 }

@@ -1,0 +1,928 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormExample should match a snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <mock-styled-h1>
+        Form Example
+      </mock-styled-h1>
+      <mock-styled-div>
+        <div
+          class="el-pn-icon"
+          data-testid="close-icon"
+        >
+          <mock-styled-span>
+            <svg
+              fill="none"
+              height="1em"
+              viewBox="0 0 20 20"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.99958 0C4.47746 0 0 4.47746 0 9.99958C0 15.5217 4.47746 20 9.99958 20C15.5217 20 20 15.5217 20 9.99958C20 4.47746 15.5217 0 9.99958 0ZM12.0813 15.498C11.5666 15.7012 11.1568 15.8552 10.8495 15.9619C10.5431 16.0686 10.1867 16.1219 9.78116 16.1219C9.1581 16.1219 8.67302 15.9695 8.32762 15.6656C7.98222 15.3617 7.81037 14.9765 7.81037 14.5084C7.81037 14.3263 7.82307 14.1401 7.84847 13.9505C7.87471 13.7608 7.91619 13.5475 7.97291 13.3079L8.61714 11.0324C8.67386 10.814 8.72296 10.6066 8.7619 10.4135C8.80085 10.2188 8.81947 10.0402 8.81947 9.87767C8.81947 9.58815 8.75937 9.38497 8.64 9.27069C8.51894 9.1564 8.29122 9.10053 7.95175 9.10053C7.78582 9.10053 7.61481 9.12508 7.43958 9.17672C7.26603 9.23005 7.11534 9.27831 6.99175 9.32571L7.1619 8.62476C7.58349 8.45291 7.9873 8.30561 8.37249 8.1837C8.75767 8.06011 9.12169 7.99915 9.46455 7.99915C10.0834 7.99915 10.5608 8.14984 10.8969 8.44783C11.2313 8.74667 11.3998 9.13524 11.3998 9.6127C11.3998 9.71175 11.3879 9.88614 11.3651 10.135C11.3422 10.3848 11.299 10.6125 11.2364 10.8216L10.5956 13.0904C10.5431 13.2724 10.4965 13.4806 10.4542 13.7134C10.4127 13.9462 10.3924 14.124 10.3924 14.2434C10.3924 14.5448 10.4593 14.7505 10.5947 14.8597C10.7285 14.9689 10.963 15.0239 11.2948 15.0239C11.4514 15.0239 11.6267 14.996 11.8248 14.9418C12.0212 14.8876 12.1634 14.8394 12.2531 14.7979L12.0813 15.498ZM11.9678 6.2891C11.669 6.56677 11.3092 6.70561 10.8885 6.70561C10.4686 6.70561 10.1062 6.56677 9.80487 6.2891C9.50519 6.01143 9.35365 5.67365 9.35365 5.27915C9.35365 4.8855 9.50603 4.54688 9.80487 4.26667C10.1062 3.98561 10.4686 3.84593 10.8885 3.84593C11.3092 3.84593 11.6698 3.98561 11.9678 4.26667C12.2667 4.54688 12.4165 4.8855 12.4165 5.27915C12.4165 5.6745 12.2667 6.01143 11.9678 6.2891Z"
+                fill="currentColor"
+              />
+            </svg>
+          </mock-styled-span>
+        </div>
+        <div
+          class="el-pn-content"
+        >
+          The form example is designed to show the various form and responsive form layout components. You can use any Form library or just straight React to manage your form state however, we strongly recommend React Hook Form (we use this internally). We have also tested Elements successfully with Formik.
+        </div>
+      </mock-styled-div>
+      <form>
+        <mock-styled-h2>
+          Main Form
+        </mock-styled-h2>
+        <mock-styled-p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non pulvinar tellus, quis pulvinar dui. Nunc enim libero, ullamcorper ac ex id, tincidunt dapibus lectus. Vestibulum at porta quam, ac condimentum dui. Duis ornare enim sed magna tincidunt volutpat.
+        </mock-styled-p>
+        <mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-div>
+              <mock-styled-input
+                id="test-static-id"
+                type="text"
+              />
+              <mock-styled-span>
+                <svg
+                  fill="none"
+                  height="1em"
+                  viewBox="0 0 20 20"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g>
+                    <path
+                      clip-rule="evenodd"
+                      d="M19.3749 10.3316C19.215 10.3316 19.055 10.2665 18.933 10.1363L18.4375 9.60771V18.0831C18.4375 19.14 17.6314 19.9999 16.6406 19.9999H12.5087C12.5058 20 12.5029 20 12.5 20H7.49997C7.49705 20 7.49413 20 7.49121 19.9999H3.35938C2.3686 19.9999 1.5625 19.1401 1.5625 18.0831V9.6077L1.06694 10.1363C0.822878 10.3967 0.427137 10.3967 0.183075 10.1363C-0.0610252 9.87599 -0.0610252 9.45384 0.183075 9.19349L7.95602 0.901689C9.08304 -0.300563 10.9169 -0.300563 12.0439 0.901689L19.8168 9.19345C20.0609 9.45384 20.0609 9.87595 19.8168 10.1363C19.6948 10.2665 19.5349 10.3316 19.3749 10.3316ZM11.875 18.6665H8.12497V13.4162C8.12497 13.0026 8.4404 12.6662 8.8281 12.6662H11.1719C11.5595 12.6662 11.875 13.0026 11.875 13.4162V18.6665ZM13.125 18.6665V13.4162C13.125 12.2674 12.2488 11.3327 11.1719 11.3327H8.8281C7.75115 11.3327 6.87497 12.2674 6.87497 13.4162V18.6665H3.35938C3.05781 18.6665 2.8125 18.4048 2.8125 18.0831V8.27427L8.83988 1.84459C9.47956 1.16221 10.5204 1.16221 11.16 1.84459L17.1875 8.27429V18.0831C17.1875 18.4048 16.9422 18.6665 16.6406 18.6665H13.125Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                  </g>
+                  <defs>
+                    <clippath
+                      id="clip0"
+                    >
+                      <rect
+                        fill="white"
+                        height="1em"
+                        width="1em"
+                      />
+                    </clippath>
+                  </defs>
+                </svg>
+              </mock-styled-span>
+              <mock-styled-label
+                htmlfor="test-static-id"
+              >
+                Address
+              </mock-styled-label>
+            </mock-styled-div>
+          </mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-div>
+              <mock-styled-input
+                id="test-static-id"
+                type="number"
+              />
+              <mock-styled-span>
+                <svg
+                  fill="none"
+                  height="1em"
+                  viewBox="0 0 20 20"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2.16715 0.897024C2.12211 0.945168 2.04601 1.04573 1.99515 1.11484C1.04974 2.36853 -0.0800943 4.29584 0.00454623 6.15599C0.148202 9.27061 4.3515 13.4102 5.63663 14.6049C6.92216 15.7992 11.3576 19.6891 14.4715 19.6045C14.9906 19.5917 15.5407 19.4826 16.106 19.2799C17.411 18.8121 18.589 17.9222 19.3371 17.2672C19.3371 17.2672 19.4983 17.1301 19.5604 17.0641C19.7169 16.8952 19.8407 16.6487 19.9389 16.3105C19.989 16.1377 19.9999 15.9556 19.9999 15.8337C19.9999 15.6978 19.9863 15.4346 19.897 15.195C19.7747 14.8674 19.6345 14.6329 19.4668 14.4752C19.3426 14.3599 16.5351 12.1604 16.5172 12.148L16.4959 12.134C16.3437 12.0171 16.1849 11.9259 16.0233 11.8626C15.6001 11.6968 15.1315 11.6902 14.7033 11.8432C14.4311 11.9407 14.1861 12.1018 13.997 12.306L13.0322 13.3388C12.9417 13.4358 12.7736 13.5364 12.7142 13.5508C12.6517 13.5624 12.6082 13.5655 12.5803 13.5663L6.10487 7.54868C6.08934 7.53392 6.08158 7.51956 6.07731 7.50946C6.08041 7.50014 6.0843 7.49199 6.08624 7.48578C6.10992 7.43763 6.22174 7.28466 6.36151 7.13324L7.31624 6.0997C7.82137 5.55652 7.94677 4.71167 7.6253 4.05279C7.51076 3.8179 7.3539 3.6424 7.2813 3.5597L7.24364 3.51311C7.225 3.49176 4.86128 0.897799 4.75529 0.800346C4.49243 0.556132 4.07855 0.424124 3.49034 0.39617C3.16342 0.380639 2.75342 0.476927 2.51542 0.624853C2.36244 0.720753 2.24791 0.810054 2.16715 0.897024ZM3.95042 1.64365C4.08282 1.77798 6.23416 4.13433 6.34676 4.25779L6.42596 4.35369C6.45819 4.3898 6.5339 4.47483 6.57816 4.56491C6.69309 4.80097 6.64805 5.10847 6.46168 5.3092L5.50579 6.34391C5.39397 6.46466 5.12219 6.77371 5.01425 7.03113C4.94281 7.20274 4.90904 7.35222 4.90865 7.52577C4.92029 7.85734 5.06084 8.1664 5.30855 8.39974L11.8492 14.4779C12.098 14.709 12.4599 14.7827 12.925 14.6969C13.2846 14.6305 13.674 14.3587 13.8836 14.1343L14.85 13.0996C14.9145 13.0301 14.9999 12.975 15.0962 12.94C15.2569 12.8826 15.4402 12.8853 15.5986 12.9474C15.691 12.9835 15.7679 13.0437 15.7931 13.0635C15.8172 13.0821 15.8366 13.0957 15.8541 13.1066C16.1231 13.3151 18.5373 15.2125 18.6682 15.3228C18.6682 15.3228 18.7256 15.3876 18.806 15.6023C18.8173 15.6326 18.8351 15.7219 18.8351 15.8333C18.8351 15.9137 18.8262 15.9661 18.8204 15.9852C18.7598 16.1933 18.7097 16.2678 18.7097 16.2678C18.672 16.3055 18.5936 16.3703 18.5804 16.3816C17.8975 16.9791 16.8461 17.777 15.7127 18.1831C15.2647 18.3438 14.8376 18.43 14.4416 18.4397C12.3143 18.4976 8.7959 15.9498 6.42985 13.7511C4.06341 11.5528 1.266 8.22968 1.16816 6.10241C1.09672 4.56879 2.09416 2.9183 2.91532 1.82885L2.94677 1.78691C2.96502 1.76206 2.99802 1.71547 3.01511 1.69528C3.04423 1.66772 3.08771 1.64093 3.12227 1.61919C3.17391 1.59278 3.33426 1.55551 3.43443 1.56056C3.77842 1.57725 3.93761 1.63899 3.95042 1.64365Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </mock-styled-span>
+              <mock-styled-label
+                htmlfor="test-static-id"
+              >
+                Phone
+              </mock-styled-label>
+            </mock-styled-div>
+          </mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-div>
+              <mock-styled-input
+                id="test-static-id"
+                type="checkbox"
+              />
+              <mock-styled-label
+                htmlfor="test-static-id"
+              >
+                Status
+              </mock-styled-label>
+            </mock-styled-div>
+          </mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-div>
+              <mock-styled-input
+                id="test-static-id"
+                type="date"
+              />
+              <mock-styled-span>
+                <svg
+                  fill="none"
+                  height="1em"
+                  viewBox="0 0 20 20"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g>
+                    <path
+                      d="M17.7083 20H2.29172C1.02753 20 0 18.9725 0 17.7083V3.95831C0 2.69412 1.02753 1.66675 2.29172 1.66675H17.7083C18.9725 1.66675 20 2.69412 20 3.95831V17.7083C20 18.9725 18.9725 20 17.7083 20ZM2.29172 2.91675C1.71753 2.91675 1.25 3.38412 1.25 3.95831V17.7083C1.25 18.2825 1.71753 18.75 2.29172 18.75H17.7083C18.2825 18.75 18.75 18.2825 18.75 17.7083V3.95831C18.75 3.38412 18.2825 2.91675 17.7083 2.91675H2.29172Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M19.375 7.91675H0.625C0.279999 7.91675 0 7.63675 0 7.29175C0 6.94675 0.279999 6.66675 0.625 6.66675H19.375C19.72 6.66675 20 6.94675 20 7.29175C20 7.63675 19.72 7.91675 19.375 7.91675Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M4.79169 5C4.44669 5 4.16669 4.72 4.16669 4.375V0.625C4.16669 0.279999 4.44669 0 4.79169 0C5.13669 0 5.41669 0.279999 5.41669 0.625V4.375C5.41669 4.72 5.13669 5 4.79169 5Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M15.2083 5C14.8633 5 14.5833 4.72 14.5833 4.375V0.625C14.5833 0.279999 14.8633 0 15.2083 0C15.5533 0 15.8333 0.279999 15.8333 0.625V4.375C15.8333 4.72 15.5533 5 15.2083 5Z"
+                      fill="currentColor"
+                    />
+                    <circle
+                      cx="5"
+                      cy="12"
+                      fill="currentColor"
+                      r="1"
+                    />
+                    <circle
+                      cx="10"
+                      cy="12"
+                      fill="currentColor"
+                      r="1"
+                    />
+                    <circle
+                      cx="15"
+                      cy="12"
+                      fill="currentColor"
+                      r="1"
+                    />
+                    <circle
+                      cx="5"
+                      cy="15"
+                      fill="currentColor"
+                      r="1"
+                    />
+                    <circle
+                      cx="10"
+                      cy="15"
+                      fill="currentColor"
+                      r="1"
+                    />
+                    <circle
+                      cx="15"
+                      cy="15"
+                      fill="currentColor"
+                      r="1"
+                    />
+                  </g>
+                  <defs>
+                    <clippath
+                      id="clip0"
+                    >
+                      <rect
+                        fill="white"
+                        height="1em"
+                        width="1em"
+                      />
+                    </clippath>
+                  </defs>
+                </svg>
+              </mock-styled-span>
+              <mock-styled-label
+                htmlfor="test-static-id"
+              >
+                Date of Birth
+              </mock-styled-label>
+            </mock-styled-div>
+          </mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-div>
+              <mock-styled-input
+                id="my-cool-toggle"
+                type="checkbox"
+              />
+              <mock-styled-label
+                htmlfor="my-cool-toggle"
+              >
+                <mock-styled-span>
+                  On
+                </mock-styled-span>
+                <mock-styled-span>
+                  Off
+                </mock-styled-span>
+              </mock-styled-label>
+              <mock-styled-label>
+                Active
+              </mock-styled-label>
+            </mock-styled-div>
+          </mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-div>
+              <mock-styled-div>
+                <mock-styled-input
+                  id="option-1"
+                  name="my-cool-toggle-radio"
+                  type="radio"
+                  value="option-1"
+                />
+                <mock-styled-label
+                  htmlfor="option-1"
+                >
+                  <mock-styled-span>
+                    Option 1
+                  </mock-styled-span>
+                </mock-styled-label>
+                <mock-styled-input
+                  id="option-2"
+                  name="my-cool-toggle-radio"
+                  type="radio"
+                  value="option-2"
+                />
+                <mock-styled-label
+                  htmlfor="option-2"
+                >
+                  <mock-styled-span>
+                    Option 2
+                  </mock-styled-span>
+                </mock-styled-label>
+                <mock-styled-input
+                  id="option-3"
+                  name="my-cool-toggle-radio"
+                  type="radio"
+                  value="option-3"
+                />
+                <mock-styled-label
+                  htmlfor="option-3"
+                >
+                  <mock-styled-span>
+                    Option 3
+                  </mock-styled-span>
+                </mock-styled-label>
+              </mock-styled-div>
+              <mock-styled-label>
+                Options
+              </mock-styled-label>
+            </mock-styled-div>
+          </mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-div>
+              <mock-styled-textarea
+                placeholder="A placeholder"
+                type="text"
+              />
+              <mock-styled-label>
+                Long Description
+              </mock-styled-label>
+            </mock-styled-div>
+          </mock-styled-div>
+        </mock-styled-div>
+        <mock-styled-h2>
+          Sub Form
+        </mock-styled-h2>
+        <mock-styled-p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non pulvinar tellus, quis pulvinar dui. Nunc enim libero, ullamcorper ac ex id, tincidunt dapibus lectus. Vestibulum at porta quam, ac condimentum dui. Duis ornare enim sed magna tincidunt volutpat.
+        </mock-styled-p>
+        <mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-div>
+              <mock-styled-input
+                id="test-static-id"
+                type="text"
+              />
+              <mock-styled-span>
+                <svg
+                  fill="none"
+                  height="1em"
+                  viewBox="0 0 20 20"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g>
+                    <path
+                      clip-rule="evenodd"
+                      d="M19.3749 10.3316C19.215 10.3316 19.055 10.2665 18.933 10.1363L18.4375 9.60771V18.0831C18.4375 19.14 17.6314 19.9999 16.6406 19.9999H12.5087C12.5058 20 12.5029 20 12.5 20H7.49997C7.49705 20 7.49413 20 7.49121 19.9999H3.35938C2.3686 19.9999 1.5625 19.1401 1.5625 18.0831V9.6077L1.06694 10.1363C0.822878 10.3967 0.427137 10.3967 0.183075 10.1363C-0.0610252 9.87599 -0.0610252 9.45384 0.183075 9.19349L7.95602 0.901689C9.08304 -0.300563 10.9169 -0.300563 12.0439 0.901689L19.8168 9.19345C20.0609 9.45384 20.0609 9.87595 19.8168 10.1363C19.6948 10.2665 19.5349 10.3316 19.3749 10.3316ZM11.875 18.6665H8.12497V13.4162C8.12497 13.0026 8.4404 12.6662 8.8281 12.6662H11.1719C11.5595 12.6662 11.875 13.0026 11.875 13.4162V18.6665ZM13.125 18.6665V13.4162C13.125 12.2674 12.2488 11.3327 11.1719 11.3327H8.8281C7.75115 11.3327 6.87497 12.2674 6.87497 13.4162V18.6665H3.35938C3.05781 18.6665 2.8125 18.4048 2.8125 18.0831V8.27427L8.83988 1.84459C9.47956 1.16221 10.5204 1.16221 11.16 1.84459L17.1875 8.27429V18.0831C17.1875 18.4048 16.9422 18.6665 16.6406 18.6665H13.125Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                  </g>
+                  <defs>
+                    <clippath
+                      id="clip0"
+                    >
+                      <rect
+                        fill="white"
+                        height="1em"
+                        width="1em"
+                      />
+                    </clippath>
+                  </defs>
+                </svg>
+              </mock-styled-span>
+              <mock-styled-label
+                htmlfor="test-static-id"
+              >
+                Really Long Address
+              </mock-styled-label>
+            </mock-styled-div>
+          </mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-div>
+              <mock-styled-input
+                id="test-static-id"
+                type="text"
+              />
+              <mock-styled-span>
+                <svg
+                  fill="none"
+                  height="1em"
+                  viewBox="0 0 20 20"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g>
+                    <path
+                      d="M18.125 2.5H1.87501C0.841067 2.5 0 3.34107 0 4.37501V15.625C0 16.659 0.841067 17.5 1.87501 17.5H18.125C19.1589 17.5 20 16.659 20 15.625V4.37501C20 3.34107 19.1589 2.5 18.125 2.5ZM18.125 3.74999C18.2099 3.74999 18.2907 3.76761 18.3645 3.79838L10 11.048L1.63542 3.79838C1.70927 3.76765 1.79005 3.74999 1.87497 3.74999H18.125ZM18.125 16.25H1.87501C1.53017 16.25 1.24999 15.9698 1.24999 15.625V5.11901L9.59045 12.3474C9.70826 12.4493 9.85413 12.5 10 12.5C10.1459 12.5 10.2917 12.4494 10.4096 12.3474L18.75 5.11901V15.625C18.75 15.9698 18.4698 16.25 18.125 16.25Z"
+                      fill="currentColor"
+                    />
+                  </g>
+                  <defs>
+                    <clippath
+                      id="clip0"
+                    >
+                      <rect
+                        fill="white"
+                        height="1em"
+                        width="1em"
+                      />
+                    </clippath>
+                  </defs>
+                </svg>
+              </mock-styled-span>
+              <mock-styled-label
+                htmlfor="test-static-id"
+              >
+                Email
+              </mock-styled-label>
+            </mock-styled-div>
+          </mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-div>
+              <mock-styled-div>
+                <mock-styled-input
+                  id="react-example"
+                />
+                <mock-styled-div>
+                  <mock-styled-input
+                    id="test-static-id"
+                    type="checkbox"
+                  />
+                  <mock-styled-label
+                    htmlfor="test-static-id"
+                  >
+                    Item one
+                  </mock-styled-label>
+                </mock-styled-div>
+                <mock-styled-div>
+                  <mock-styled-input
+                    id="test-static-id"
+                    type="checkbox"
+                  />
+                  <mock-styled-label
+                    htmlfor="test-static-id"
+                  >
+                    Item two
+                  </mock-styled-label>
+                  <mock-styled-input
+                    id="test-static-id"
+                    type="checkbox"
+                  />
+                  <mock-styled-label
+                    htmlfor="test-static-id"
+                  >
+                    Item three
+                  </mock-styled-label>
+                </mock-styled-div>
+              </mock-styled-div>
+              <mock-styled-label>
+                Select Items
+              </mock-styled-label>
+            </mock-styled-div>
+          </mock-styled-div>
+        </mock-styled-div>
+        <mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-button>
+              Cancel
+            </mock-styled-button>
+            <mock-styled-button>
+              Submit
+            </mock-styled-button>
+          </mock-styled-div>
+        </mock-styled-div>
+      </form>
+    </div>
+  </body>,
+  "container": <div>
+    <mock-styled-h1>
+      Form Example
+    </mock-styled-h1>
+    <mock-styled-div>
+      <div
+        class="el-pn-icon"
+        data-testid="close-icon"
+      >
+        <mock-styled-span>
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 20 20"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.99958 0C4.47746 0 0 4.47746 0 9.99958C0 15.5217 4.47746 20 9.99958 20C15.5217 20 20 15.5217 20 9.99958C20 4.47746 15.5217 0 9.99958 0ZM12.0813 15.498C11.5666 15.7012 11.1568 15.8552 10.8495 15.9619C10.5431 16.0686 10.1867 16.1219 9.78116 16.1219C9.1581 16.1219 8.67302 15.9695 8.32762 15.6656C7.98222 15.3617 7.81037 14.9765 7.81037 14.5084C7.81037 14.3263 7.82307 14.1401 7.84847 13.9505C7.87471 13.7608 7.91619 13.5475 7.97291 13.3079L8.61714 11.0324C8.67386 10.814 8.72296 10.6066 8.7619 10.4135C8.80085 10.2188 8.81947 10.0402 8.81947 9.87767C8.81947 9.58815 8.75937 9.38497 8.64 9.27069C8.51894 9.1564 8.29122 9.10053 7.95175 9.10053C7.78582 9.10053 7.61481 9.12508 7.43958 9.17672C7.26603 9.23005 7.11534 9.27831 6.99175 9.32571L7.1619 8.62476C7.58349 8.45291 7.9873 8.30561 8.37249 8.1837C8.75767 8.06011 9.12169 7.99915 9.46455 7.99915C10.0834 7.99915 10.5608 8.14984 10.8969 8.44783C11.2313 8.74667 11.3998 9.13524 11.3998 9.6127C11.3998 9.71175 11.3879 9.88614 11.3651 10.135C11.3422 10.3848 11.299 10.6125 11.2364 10.8216L10.5956 13.0904C10.5431 13.2724 10.4965 13.4806 10.4542 13.7134C10.4127 13.9462 10.3924 14.124 10.3924 14.2434C10.3924 14.5448 10.4593 14.7505 10.5947 14.8597C10.7285 14.9689 10.963 15.0239 11.2948 15.0239C11.4514 15.0239 11.6267 14.996 11.8248 14.9418C12.0212 14.8876 12.1634 14.8394 12.2531 14.7979L12.0813 15.498ZM11.9678 6.2891C11.669 6.56677 11.3092 6.70561 10.8885 6.70561C10.4686 6.70561 10.1062 6.56677 9.80487 6.2891C9.50519 6.01143 9.35365 5.67365 9.35365 5.27915C9.35365 4.8855 9.50603 4.54688 9.80487 4.26667C10.1062 3.98561 10.4686 3.84593 10.8885 3.84593C11.3092 3.84593 11.6698 3.98561 11.9678 4.26667C12.2667 4.54688 12.4165 4.8855 12.4165 5.27915C12.4165 5.6745 12.2667 6.01143 11.9678 6.2891Z"
+              fill="currentColor"
+            />
+          </svg>
+        </mock-styled-span>
+      </div>
+      <div
+        class="el-pn-content"
+      >
+        The form example is designed to show the various form and responsive form layout components. You can use any Form library or just straight React to manage your form state however, we strongly recommend React Hook Form (we use this internally). We have also tested Elements successfully with Formik.
+      </div>
+    </mock-styled-div>
+    <form>
+      <mock-styled-h2>
+        Main Form
+      </mock-styled-h2>
+      <mock-styled-p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non pulvinar tellus, quis pulvinar dui. Nunc enim libero, ullamcorper ac ex id, tincidunt dapibus lectus. Vestibulum at porta quam, ac condimentum dui. Duis ornare enim sed magna tincidunt volutpat.
+      </mock-styled-p>
+      <mock-styled-div>
+        <mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-input
+              id="test-static-id"
+              type="text"
+            />
+            <mock-styled-span>
+              <svg
+                fill="none"
+                height="1em"
+                viewBox="0 0 20 20"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <path
+                    clip-rule="evenodd"
+                    d="M19.3749 10.3316C19.215 10.3316 19.055 10.2665 18.933 10.1363L18.4375 9.60771V18.0831C18.4375 19.14 17.6314 19.9999 16.6406 19.9999H12.5087C12.5058 20 12.5029 20 12.5 20H7.49997C7.49705 20 7.49413 20 7.49121 19.9999H3.35938C2.3686 19.9999 1.5625 19.1401 1.5625 18.0831V9.6077L1.06694 10.1363C0.822878 10.3967 0.427137 10.3967 0.183075 10.1363C-0.0610252 9.87599 -0.0610252 9.45384 0.183075 9.19349L7.95602 0.901689C9.08304 -0.300563 10.9169 -0.300563 12.0439 0.901689L19.8168 9.19345C20.0609 9.45384 20.0609 9.87595 19.8168 10.1363C19.6948 10.2665 19.5349 10.3316 19.3749 10.3316ZM11.875 18.6665H8.12497V13.4162C8.12497 13.0026 8.4404 12.6662 8.8281 12.6662H11.1719C11.5595 12.6662 11.875 13.0026 11.875 13.4162V18.6665ZM13.125 18.6665V13.4162C13.125 12.2674 12.2488 11.3327 11.1719 11.3327H8.8281C7.75115 11.3327 6.87497 12.2674 6.87497 13.4162V18.6665H3.35938C3.05781 18.6665 2.8125 18.4048 2.8125 18.0831V8.27427L8.83988 1.84459C9.47956 1.16221 10.5204 1.16221 11.16 1.84459L17.1875 8.27429V18.0831C17.1875 18.4048 16.9422 18.6665 16.6406 18.6665H13.125Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                  />
+                </g>
+                <defs>
+                  <clippath
+                    id="clip0"
+                  >
+                    <rect
+                      fill="white"
+                      height="1em"
+                      width="1em"
+                    />
+                  </clippath>
+                </defs>
+              </svg>
+            </mock-styled-span>
+            <mock-styled-label
+              htmlfor="test-static-id"
+            >
+              Address
+            </mock-styled-label>
+          </mock-styled-div>
+        </mock-styled-div>
+        <mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-input
+              id="test-static-id"
+              type="number"
+            />
+            <mock-styled-span>
+              <svg
+                fill="none"
+                height="1em"
+                viewBox="0 0 20 20"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2.16715 0.897024C2.12211 0.945168 2.04601 1.04573 1.99515 1.11484C1.04974 2.36853 -0.0800943 4.29584 0.00454623 6.15599C0.148202 9.27061 4.3515 13.4102 5.63663 14.6049C6.92216 15.7992 11.3576 19.6891 14.4715 19.6045C14.9906 19.5917 15.5407 19.4826 16.106 19.2799C17.411 18.8121 18.589 17.9222 19.3371 17.2672C19.3371 17.2672 19.4983 17.1301 19.5604 17.0641C19.7169 16.8952 19.8407 16.6487 19.9389 16.3105C19.989 16.1377 19.9999 15.9556 19.9999 15.8337C19.9999 15.6978 19.9863 15.4346 19.897 15.195C19.7747 14.8674 19.6345 14.6329 19.4668 14.4752C19.3426 14.3599 16.5351 12.1604 16.5172 12.148L16.4959 12.134C16.3437 12.0171 16.1849 11.9259 16.0233 11.8626C15.6001 11.6968 15.1315 11.6902 14.7033 11.8432C14.4311 11.9407 14.1861 12.1018 13.997 12.306L13.0322 13.3388C12.9417 13.4358 12.7736 13.5364 12.7142 13.5508C12.6517 13.5624 12.6082 13.5655 12.5803 13.5663L6.10487 7.54868C6.08934 7.53392 6.08158 7.51956 6.07731 7.50946C6.08041 7.50014 6.0843 7.49199 6.08624 7.48578C6.10992 7.43763 6.22174 7.28466 6.36151 7.13324L7.31624 6.0997C7.82137 5.55652 7.94677 4.71167 7.6253 4.05279C7.51076 3.8179 7.3539 3.6424 7.2813 3.5597L7.24364 3.51311C7.225 3.49176 4.86128 0.897799 4.75529 0.800346C4.49243 0.556132 4.07855 0.424124 3.49034 0.39617C3.16342 0.380639 2.75342 0.476927 2.51542 0.624853C2.36244 0.720753 2.24791 0.810054 2.16715 0.897024ZM3.95042 1.64365C4.08282 1.77798 6.23416 4.13433 6.34676 4.25779L6.42596 4.35369C6.45819 4.3898 6.5339 4.47483 6.57816 4.56491C6.69309 4.80097 6.64805 5.10847 6.46168 5.3092L5.50579 6.34391C5.39397 6.46466 5.12219 6.77371 5.01425 7.03113C4.94281 7.20274 4.90904 7.35222 4.90865 7.52577C4.92029 7.85734 5.06084 8.1664 5.30855 8.39974L11.8492 14.4779C12.098 14.709 12.4599 14.7827 12.925 14.6969C13.2846 14.6305 13.674 14.3587 13.8836 14.1343L14.85 13.0996C14.9145 13.0301 14.9999 12.975 15.0962 12.94C15.2569 12.8826 15.4402 12.8853 15.5986 12.9474C15.691 12.9835 15.7679 13.0437 15.7931 13.0635C15.8172 13.0821 15.8366 13.0957 15.8541 13.1066C16.1231 13.3151 18.5373 15.2125 18.6682 15.3228C18.6682 15.3228 18.7256 15.3876 18.806 15.6023C18.8173 15.6326 18.8351 15.7219 18.8351 15.8333C18.8351 15.9137 18.8262 15.9661 18.8204 15.9852C18.7598 16.1933 18.7097 16.2678 18.7097 16.2678C18.672 16.3055 18.5936 16.3703 18.5804 16.3816C17.8975 16.9791 16.8461 17.777 15.7127 18.1831C15.2647 18.3438 14.8376 18.43 14.4416 18.4397C12.3143 18.4976 8.7959 15.9498 6.42985 13.7511C4.06341 11.5528 1.266 8.22968 1.16816 6.10241C1.09672 4.56879 2.09416 2.9183 2.91532 1.82885L2.94677 1.78691C2.96502 1.76206 2.99802 1.71547 3.01511 1.69528C3.04423 1.66772 3.08771 1.64093 3.12227 1.61919C3.17391 1.59278 3.33426 1.55551 3.43443 1.56056C3.77842 1.57725 3.93761 1.63899 3.95042 1.64365Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </mock-styled-span>
+            <mock-styled-label
+              htmlfor="test-static-id"
+            >
+              Phone
+            </mock-styled-label>
+          </mock-styled-div>
+        </mock-styled-div>
+        <mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-input
+              id="test-static-id"
+              type="checkbox"
+            />
+            <mock-styled-label
+              htmlfor="test-static-id"
+            >
+              Status
+            </mock-styled-label>
+          </mock-styled-div>
+        </mock-styled-div>
+        <mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-input
+              id="test-static-id"
+              type="date"
+            />
+            <mock-styled-span>
+              <svg
+                fill="none"
+                height="1em"
+                viewBox="0 0 20 20"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <path
+                    d="M17.7083 20H2.29172C1.02753 20 0 18.9725 0 17.7083V3.95831C0 2.69412 1.02753 1.66675 2.29172 1.66675H17.7083C18.9725 1.66675 20 2.69412 20 3.95831V17.7083C20 18.9725 18.9725 20 17.7083 20ZM2.29172 2.91675C1.71753 2.91675 1.25 3.38412 1.25 3.95831V17.7083C1.25 18.2825 1.71753 18.75 2.29172 18.75H17.7083C18.2825 18.75 18.75 18.2825 18.75 17.7083V3.95831C18.75 3.38412 18.2825 2.91675 17.7083 2.91675H2.29172Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M19.375 7.91675H0.625C0.279999 7.91675 0 7.63675 0 7.29175C0 6.94675 0.279999 6.66675 0.625 6.66675H19.375C19.72 6.66675 20 6.94675 20 7.29175C20 7.63675 19.72 7.91675 19.375 7.91675Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M4.79169 5C4.44669 5 4.16669 4.72 4.16669 4.375V0.625C4.16669 0.279999 4.44669 0 4.79169 0C5.13669 0 5.41669 0.279999 5.41669 0.625V4.375C5.41669 4.72 5.13669 5 4.79169 5Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M15.2083 5C14.8633 5 14.5833 4.72 14.5833 4.375V0.625C14.5833 0.279999 14.8633 0 15.2083 0C15.5533 0 15.8333 0.279999 15.8333 0.625V4.375C15.8333 4.72 15.5533 5 15.2083 5Z"
+                    fill="currentColor"
+                  />
+                  <circle
+                    cx="5"
+                    cy="12"
+                    fill="currentColor"
+                    r="1"
+                  />
+                  <circle
+                    cx="10"
+                    cy="12"
+                    fill="currentColor"
+                    r="1"
+                  />
+                  <circle
+                    cx="15"
+                    cy="12"
+                    fill="currentColor"
+                    r="1"
+                  />
+                  <circle
+                    cx="5"
+                    cy="15"
+                    fill="currentColor"
+                    r="1"
+                  />
+                  <circle
+                    cx="10"
+                    cy="15"
+                    fill="currentColor"
+                    r="1"
+                  />
+                  <circle
+                    cx="15"
+                    cy="15"
+                    fill="currentColor"
+                    r="1"
+                  />
+                </g>
+                <defs>
+                  <clippath
+                    id="clip0"
+                  >
+                    <rect
+                      fill="white"
+                      height="1em"
+                      width="1em"
+                    />
+                  </clippath>
+                </defs>
+              </svg>
+            </mock-styled-span>
+            <mock-styled-label
+              htmlfor="test-static-id"
+            >
+              Date of Birth
+            </mock-styled-label>
+          </mock-styled-div>
+        </mock-styled-div>
+        <mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-input
+              id="my-cool-toggle"
+              type="checkbox"
+            />
+            <mock-styled-label
+              htmlfor="my-cool-toggle"
+            >
+              <mock-styled-span>
+                On
+              </mock-styled-span>
+              <mock-styled-span>
+                Off
+              </mock-styled-span>
+            </mock-styled-label>
+            <mock-styled-label>
+              Active
+            </mock-styled-label>
+          </mock-styled-div>
+        </mock-styled-div>
+        <mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-div>
+              <mock-styled-input
+                id="option-1"
+                name="my-cool-toggle-radio"
+                type="radio"
+                value="option-1"
+              />
+              <mock-styled-label
+                htmlfor="option-1"
+              >
+                <mock-styled-span>
+                  Option 1
+                </mock-styled-span>
+              </mock-styled-label>
+              <mock-styled-input
+                id="option-2"
+                name="my-cool-toggle-radio"
+                type="radio"
+                value="option-2"
+              />
+              <mock-styled-label
+                htmlfor="option-2"
+              >
+                <mock-styled-span>
+                  Option 2
+                </mock-styled-span>
+              </mock-styled-label>
+              <mock-styled-input
+                id="option-3"
+                name="my-cool-toggle-radio"
+                type="radio"
+                value="option-3"
+              />
+              <mock-styled-label
+                htmlfor="option-3"
+              >
+                <mock-styled-span>
+                  Option 3
+                </mock-styled-span>
+              </mock-styled-label>
+            </mock-styled-div>
+            <mock-styled-label>
+              Options
+            </mock-styled-label>
+          </mock-styled-div>
+        </mock-styled-div>
+        <mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-textarea
+              placeholder="A placeholder"
+              type="text"
+            />
+            <mock-styled-label>
+              Long Description
+            </mock-styled-label>
+          </mock-styled-div>
+        </mock-styled-div>
+      </mock-styled-div>
+      <mock-styled-h2>
+        Sub Form
+      </mock-styled-h2>
+      <mock-styled-p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non pulvinar tellus, quis pulvinar dui. Nunc enim libero, ullamcorper ac ex id, tincidunt dapibus lectus. Vestibulum at porta quam, ac condimentum dui. Duis ornare enim sed magna tincidunt volutpat.
+      </mock-styled-p>
+      <mock-styled-div>
+        <mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-input
+              id="test-static-id"
+              type="text"
+            />
+            <mock-styled-span>
+              <svg
+                fill="none"
+                height="1em"
+                viewBox="0 0 20 20"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <path
+                    clip-rule="evenodd"
+                    d="M19.3749 10.3316C19.215 10.3316 19.055 10.2665 18.933 10.1363L18.4375 9.60771V18.0831C18.4375 19.14 17.6314 19.9999 16.6406 19.9999H12.5087C12.5058 20 12.5029 20 12.5 20H7.49997C7.49705 20 7.49413 20 7.49121 19.9999H3.35938C2.3686 19.9999 1.5625 19.1401 1.5625 18.0831V9.6077L1.06694 10.1363C0.822878 10.3967 0.427137 10.3967 0.183075 10.1363C-0.0610252 9.87599 -0.0610252 9.45384 0.183075 9.19349L7.95602 0.901689C9.08304 -0.300563 10.9169 -0.300563 12.0439 0.901689L19.8168 9.19345C20.0609 9.45384 20.0609 9.87595 19.8168 10.1363C19.6948 10.2665 19.5349 10.3316 19.3749 10.3316ZM11.875 18.6665H8.12497V13.4162C8.12497 13.0026 8.4404 12.6662 8.8281 12.6662H11.1719C11.5595 12.6662 11.875 13.0026 11.875 13.4162V18.6665ZM13.125 18.6665V13.4162C13.125 12.2674 12.2488 11.3327 11.1719 11.3327H8.8281C7.75115 11.3327 6.87497 12.2674 6.87497 13.4162V18.6665H3.35938C3.05781 18.6665 2.8125 18.4048 2.8125 18.0831V8.27427L8.83988 1.84459C9.47956 1.16221 10.5204 1.16221 11.16 1.84459L17.1875 8.27429V18.0831C17.1875 18.4048 16.9422 18.6665 16.6406 18.6665H13.125Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                  />
+                </g>
+                <defs>
+                  <clippath
+                    id="clip0"
+                  >
+                    <rect
+                      fill="white"
+                      height="1em"
+                      width="1em"
+                    />
+                  </clippath>
+                </defs>
+              </svg>
+            </mock-styled-span>
+            <mock-styled-label
+              htmlfor="test-static-id"
+            >
+              Really Long Address
+            </mock-styled-label>
+          </mock-styled-div>
+        </mock-styled-div>
+        <mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-input
+              id="test-static-id"
+              type="text"
+            />
+            <mock-styled-span>
+              <svg
+                fill="none"
+                height="1em"
+                viewBox="0 0 20 20"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <path
+                    d="M18.125 2.5H1.87501C0.841067 2.5 0 3.34107 0 4.37501V15.625C0 16.659 0.841067 17.5 1.87501 17.5H18.125C19.1589 17.5 20 16.659 20 15.625V4.37501C20 3.34107 19.1589 2.5 18.125 2.5ZM18.125 3.74999C18.2099 3.74999 18.2907 3.76761 18.3645 3.79838L10 11.048L1.63542 3.79838C1.70927 3.76765 1.79005 3.74999 1.87497 3.74999H18.125ZM18.125 16.25H1.87501C1.53017 16.25 1.24999 15.9698 1.24999 15.625V5.11901L9.59045 12.3474C9.70826 12.4493 9.85413 12.5 10 12.5C10.1459 12.5 10.2917 12.4494 10.4096 12.3474L18.75 5.11901V15.625C18.75 15.9698 18.4698 16.25 18.125 16.25Z"
+                    fill="currentColor"
+                  />
+                </g>
+                <defs>
+                  <clippath
+                    id="clip0"
+                  >
+                    <rect
+                      fill="white"
+                      height="1em"
+                      width="1em"
+                    />
+                  </clippath>
+                </defs>
+              </svg>
+            </mock-styled-span>
+            <mock-styled-label
+              htmlfor="test-static-id"
+            >
+              Email
+            </mock-styled-label>
+          </mock-styled-div>
+        </mock-styled-div>
+        <mock-styled-div>
+          <mock-styled-div>
+            <mock-styled-div>
+              <mock-styled-input
+                id="react-example"
+              />
+              <mock-styled-div>
+                <mock-styled-input
+                  id="test-static-id"
+                  type="checkbox"
+                />
+                <mock-styled-label
+                  htmlfor="test-static-id"
+                >
+                  Item one
+                </mock-styled-label>
+              </mock-styled-div>
+              <mock-styled-div>
+                <mock-styled-input
+                  id="test-static-id"
+                  type="checkbox"
+                />
+                <mock-styled-label
+                  htmlfor="test-static-id"
+                >
+                  Item two
+                </mock-styled-label>
+                <mock-styled-input
+                  id="test-static-id"
+                  type="checkbox"
+                />
+                <mock-styled-label
+                  htmlfor="test-static-id"
+                >
+                  Item three
+                </mock-styled-label>
+              </mock-styled-div>
+            </mock-styled-div>
+            <mock-styled-label>
+              Select Items
+            </mock-styled-label>
+          </mock-styled-div>
+        </mock-styled-div>
+      </mock-styled-div>
+      <mock-styled-div>
+        <mock-styled-div>
+          <mock-styled-button>
+            Cancel
+          </mock-styled-button>
+          <mock-styled-button>
+            Submit
+          </mock-styled-button>
+        </mock-styled-div>
+      </mock-styled-div>
+    </form>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

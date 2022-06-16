@@ -5,4 +5,6 @@ export const Routes = {
   LIST: '/list',
   DATA: '/data',
   LOGIN: '/login',
+
+  SINGLE_TENANCY: '/tenancy/:tenancyId',
 }
