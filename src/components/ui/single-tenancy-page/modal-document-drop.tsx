@@ -5,9 +5,11 @@ import { UseMutationResult, useQueryClient } from 'react-query'
 import { ListItemModel } from '@reapit/foundations-ts-definitions'
 import { useForm } from 'react-hook-form'
 import mime from 'mime'
+
 import { CreateDocumentTenancyCheck } from '../../../platform-api/document-api'
 
 type ModalDocumentDropProps = {
+  tenancyCheckId: string
   uploadedDocument: File[]
   handleDroppedDocumentModal: () => {
     closeDroppedDocumentModal: () => void
@@ -17,6 +19,7 @@ type ModalDocumentDropProps = {
 }
 
 const ModalDocumentDrop: FC<ModalDocumentDropProps> = ({
+  tenancyCheckId,
   uploadedDocument,
   handleDroppedDocumentModal,
   createDocument,
@@ -41,18 +44,21 @@ const ModalDocumentDrop: FC<ModalDocumentDropProps> = ({
       reader.onerror = (error) => rej(error)
     })
   }
+
+  const { mutateAsync, isLoading } = createDocument
+
   const submitDataValue = async () => {
-    // e.preventDefault()
     const convertedFile = await convertToBase64(uploadedDocument[0])
 
-    await createDocument.mutateAsync(
+    await mutateAsync(
       {
         typeId: getValues('docType'),
         fileData: convertedFile,
-        name: `${getValues('docName')}.${getValues('docType')}`,
+        name: `${getValues('docName')}.${getValues('docExtension')}`,
       },
       {
         onSuccess: () => {
+          queryClient.invalidateQueries(['tenancy-check-document', tenancyCheckId])
           console.log('success upload')
         },
         onError: () => {
@@ -60,8 +66,6 @@ const ModalDocumentDrop: FC<ModalDocumentDropProps> = ({
         },
       },
     )
-    console.log(getValues())
-    // upload to service
     handleDroppedDocumentModal().closeDroppedDocumentModal()
   }
 
@@ -92,8 +96,14 @@ const ModalDocumentDrop: FC<ModalDocumentDropProps> = ({
           ))}
         </Select>
         <ButtonGroup alignment="right" className="el-mt6">
-          <Button onClick={handleDroppedDocumentModal().closeDroppedDocumentModal}>Cancel</Button>
-          <Button type="submit" intent="primary">
+          <Button
+            onClick={handleDroppedDocumentModal().closeDroppedDocumentModal}
+            disabled={isLoading}
+            loading={isLoading}
+          >
+            Cancel
+          </Button>
+          <Button type="submit" intent="primary" disabled={isLoading} loading={isLoading}>
             Save
           </Button>
         </ButtonGroup>

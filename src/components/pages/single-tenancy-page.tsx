@@ -4,7 +4,7 @@ import { Loader, PageContainer, useModal } from '@reapit/elements'
 import { useParams } from 'react-router'
 
 import { useFetchSingleTenancy } from '../../platform-api/tenancy-api'
-import PreTenancyList from '../ui/single-tenancy-page/pre-tenancy-list'
+import PreTenancyList, { ListProps } from '../ui/single-tenancy-page/pre-tenancy-list'
 import { useFetchDocumentTenancyCheck } from '../../platform-api/document-api'
 import ModalTenancyContent from '../ui/single-tenancy-page/modal-tenancy-content'
 import { useFetchConfiguration } from '../../platform-api/configuration-api'
@@ -13,6 +13,7 @@ type SingleTenancyPageType = {}
 
 const SingleTenancyPage: FC<SingleTenancyPageType> = () => {
   const { tenancyId } = useParams<{ tenancyId: string }>()
+
   const { getSingleTenancy, getSingleTenancyChecks, patchSingleTenancyChecks } = useFetchSingleTenancy({
     id: tenancyId,
   })
@@ -25,6 +26,7 @@ const SingleTenancyPage: FC<SingleTenancyPageType> = () => {
   const { getDocumentTypes } = useFetchConfiguration()
   const { isFetched: documentTypesIsFetched } = getDocumentTypes()
 
+  // * Render JSX Element
   const renderJSXElement = useCallback(
     ({
       fetchedData,
@@ -33,7 +35,7 @@ const SingleTenancyPage: FC<SingleTenancyPageType> = () => {
       fetchedData: typeof tenancyData
       fetchedChecksData: typeof tenancyChecksData
     }): ReactNode => {
-      if (fetchedData && fetchedChecksData && documentTypesIsFetched) {
+      if (!!fetchedData && !!fetchedChecksData && documentTypesIsFetched) {
         return (
           <PreTenancyList
             tenancyData={fetchedData}
@@ -43,19 +45,25 @@ const SingleTenancyPage: FC<SingleTenancyPageType> = () => {
           />
         )
       }
+
+      return <Loader label="Please wait..." fullPage />
     },
-    [documentTypesIsFetched],
+    [documentTypesIsFetched, tenancyChecksData],
   )
 
   // * Document Modal
   const { Modal: TenancyCheckDocumentModal, ...modalRest } = useModal('modal-root')
-  const [selectedTenancyCheck, setSelectedTenancyCheckId] = useState<string | null>(null)
+  const [selectedTenancyCheck, setSelectedTenancyCheckId] = useState<any | null>(null)
   const { getDocumentTenancyCheck } = useFetchDocumentTenancyCheck()
   const { data: documentSelectedTenancyCheck } = getDocumentTenancyCheck(selectedTenancyCheck)
+
   const handleTenancyCheckDocumentModal = useCallback(() => {
-    const openDocumentModal = (params: string) => {
-      setSelectedTenancyCheckId(params)
-      modalRest.openModal()
+    const openDocumentModal = async (params: ListProps) => {
+      if (params?.checkId) {
+        setSelectedTenancyCheckId(params.checkId)
+        modalRest.openModal()
+      }
+      // check if not exist, then we should create one
     }
 
     const closeDocumentModal = () => {
@@ -69,6 +77,7 @@ const SingleTenancyPage: FC<SingleTenancyPageType> = () => {
     }
   }, [])
 
+  // * Render Document Modal JSX Element
   const renderJSXModalDocumentElement = useCallback(
     ({ documentData }: { documentData: typeof documentSelectedTenancyCheck }): JSX.Element => {
       if (documentData && selectedTenancyCheck) {
@@ -87,8 +96,7 @@ const SingleTenancyPage: FC<SingleTenancyPageType> = () => {
           fetchedData: tenancyData,
           fetchedChecksData: tenancyChecksData,
         })}
-        <TenancyCheckDocumentModal>
-          {/* <h1>hi - {documentSelectedTenancyCheck?.totalCount}</h1> */}
+        <TenancyCheckDocumentModal title={`Tenancy Check - ${selectedTenancyCheck} - documents`}>
           {renderJSXModalDocumentElement({
             documentData: documentSelectedTenancyCheck,
           })}
