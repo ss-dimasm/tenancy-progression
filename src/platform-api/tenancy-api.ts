@@ -9,6 +9,7 @@ import { stringify } from 'qs'
 
 import { URLS } from '../constants/api'
 import { Axios } from '../core/axios'
+import { ListProps } from '../components/ui/single-tenancy-page/pre-tenancy-list'
 
 export const useFetchSingleTenancy = (params: TenancySingleResultQuery) => {
   // * get single tenancy data
@@ -82,12 +83,25 @@ export const useFetchSingleTenancy = (params: TenancySingleResultQuery) => {
     })
   }
 
+  // * post single tenancy checks
+  const postSingleTenancyChecks = () => {
+    return useMutation(['post-single-tenancy-check'], async (tenancy: ListProps) => {
+      const { data } = await Axios.post(`${URLS.TENANCIES}${params.id}/checks`, {
+        description: tenancy.description,
+        type: tenancy.type,
+        status: tenancy.status,
+      })
+      return data
+    })
+  }
+
   // * update single tenancy check
   const patchSingleTenancyChecks = () => {
     return useMutation(['patch-single-tenancy-checks'], async (mutateParams: PatchSingleTenancyCheckParams) => {
       const { data } = await Axios.patch(
         `${URLS.TENANCIES}${params.id}/checks/${mutateParams.checkId}`,
         {
+          description: mutateParams.description,
           status: mutateParams.status,
         },
         {
@@ -106,7 +120,64 @@ export const useFetchSingleTenancy = (params: TenancySingleResultQuery) => {
     patchSingleTenancy,
     getSingleTenancyRelationship,
     getSingleTenancyChecks,
+    postSingleTenancyChecks,
     patchSingleTenancyChecks,
+  }
+}
+
+export const useFetchMultipleTenancyCheck = (tenancyId: string) => {
+  const createMultipleTenancyCheck = () => {
+    return useMutation(['create-tenancy-checks', tenancyId], async (tenancies: ListProps[]) => {
+      return Promise.allSettled(
+        tenancies.map(async (tenancy: ListProps) => {
+          const { data } = await Axios.post(`${URLS.TENANCIES}${tenancyId}/checks`, {
+            description: tenancy.description,
+            type: tenancy.type,
+            status: tenancy.status,
+          })
+          return data
+        }),
+      )
+    })
+  }
+
+  const deleteMultipleTenancyCheck = () => {
+    return useMutation(['delete-tenancy-checks', tenancyId], async (tenancies: ListProps[]) => {
+      return Promise.allSettled(
+        tenancies.map(async (tenancy) => {
+          const { data } = await Axios.delete(`${URLS.TENANCIES}${tenancyId}/checks/${tenancy.checkId}`)
+          return data
+        }),
+      )
+    })
+  }
+
+  const updateMultipleTenancyCheck = () => {
+    return useMutation((tenancies: ListProps[]) => {
+      return Promise.allSettled(
+        tenancies.map(async (tenancy) => {
+          const { data } = await Axios.patch(
+            `${URLS.TENANCIES}${tenancyId}/checks/${tenancy.checkId}`,
+            {
+              description: tenancy.description!,
+              status: tenancy.status!,
+            },
+            {
+              headers: {
+                ['If-Match']: tenancy._eTag!,
+              },
+            },
+          )
+          return data
+        }),
+      )
+    })
+  }
+
+  return {
+    createMultipleTenancyCheck,
+    updateMultipleTenancyCheck,
+    deleteMultipleTenancyCheck,
   }
 }
 
@@ -131,9 +202,7 @@ type TenanciesPagedResultParams = {
 export const useGetPaginatedTenancies = (params: TenanciesPagedResultParams) => {
   return useQuery(['get-paginated-tenancies', params], async () => {
     const { data } = await Axios.get<TenancyModelPagedResult>(URLS.TENANCIES, {
-      params: {
-        ...params,
-      },
+      params,
       paramsSerializer: (params) =>
         stringify(params, {
           arrayFormat: 'repeat',
