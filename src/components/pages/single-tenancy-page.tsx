@@ -20,7 +20,15 @@ const SingleTenancyPage: FC<SingleTenancyPageType> = () => {
   const { data: tenancyData } = getSingleTenancy({
     embed: ['documents', 'applicant', 'negotiator', 'property'],
   })
-  const { data: tenancyChecksData } = getSingleTenancyChecks()
+
+  // *TenancyCheck Data + pagination
+  const {
+    data: tenancyChecksData,
+    hasNextPage: tenancyChecksHasNextPage,
+    fetchNextPage: tenancyChecksFetchNextPage,
+    isFetching: tenancyChecksIsFetching,
+  } = getSingleTenancyChecks({})
+  tenancyChecksHasNextPage && tenancyChecksFetchNextPage()
 
   // * Configuration data
   const { getDocumentTypes } = useFetchConfiguration()
@@ -48,7 +56,7 @@ const SingleTenancyPage: FC<SingleTenancyPageType> = () => {
 
       return <Loader label="Please wait..." fullPage />
     },
-    [documentTypesIsFetched, tenancyChecksData],
+    [documentTypesIsFetched, tenancyChecksData, tenancyChecksIsFetching],
   )
 
   // * Document Modal

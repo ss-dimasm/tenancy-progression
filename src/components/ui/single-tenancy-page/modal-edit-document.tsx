@@ -41,6 +41,7 @@ const ModalEditDocument: FC<ModalEditDocumentProps> = ({ documentData, closeModa
           },
           onSettled: () => {
             queryClient.invalidateQueries(['tenancy-check-document', documentData.associatedId])
+            queryClient.invalidateQueries(['get-infinite-documents-tenancy-checks'])
           },
         },
       )

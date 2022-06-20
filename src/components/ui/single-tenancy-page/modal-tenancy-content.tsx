@@ -3,7 +3,7 @@ import React, { FC, useCallback, useMemo, useState } from 'react'
 import { DocumentModel, DocumentModelPagedResult } from '@reapit/foundations-ts-definitions'
 import { DndProvider, DropTargetMonitor, useDrop } from 'react-dnd'
 import { HTML5Backend, NativeTypes } from 'react-dnd-html5-backend'
-import { Button, ButtonGroup, elSpan2, RowProps, Table, useModal } from '@reapit/elements'
+import { BodyText, Button, ButtonGroup, elSpan2, RowProps, Table, useModal } from '@reapit/elements'
 import dayjs from 'dayjs'
 
 import ModalDocumentDrop from './modal-document-drop'
@@ -81,7 +81,7 @@ type ModalTenancyListProps = {
 }
 
 const ModalTenancyList: FC<ModalTenancyListProps> = ({ onDrop, documentsData }) => {
-  const [, dropRef] = useDrop(
+  const [{ canDrop, isOver }, dropRef] = useDrop(
     () => ({
       accept: [NativeTypes.FILE],
       drop(item: { files: File[] }) {
@@ -221,7 +221,15 @@ const ModalTenancyList: FC<ModalTenancyListProps> = ({ onDrop, documentsData }) 
 
   return (
     <div ref={dropRef} style={{ minHeight: '250px' }}>
-      <Table numberColumns={5} rows={renderTableCellsContent()} />
+      {documentsData._embedded?.length === 0 ? (
+        canDrop && isOver ? (
+          <BodyText hasCenteredText>Drop it now</BodyText>
+        ) : (
+          <BodyText hasCenteredText>Drop file here 🙂</BodyText>
+        )
+      ) : (
+        <Table numberColumns={5} rows={renderTableCellsContent()} />
+      )}
       <ChangeDocModal title={renderJSXChangeDocModal?.[changeDocModalContent!]?.title} style={{ maxWidth: '500px' }}>
         {renderJSXChangeDocModal?.[changeDocModalContent!]?.content}
       </ChangeDocModal>

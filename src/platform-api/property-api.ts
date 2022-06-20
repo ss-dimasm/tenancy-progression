@@ -125,10 +125,3 @@ export const useGetPaginatedProperties = (params: PaginatedPropertiesParameters)
     return data
   })
 }
-
-// ==========
-// * SINGLE PROPERTY FETCH
-// ==========
-// export const useFetchSingleProperty = (params: any) => {
-//   //
-// }

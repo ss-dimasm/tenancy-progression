@@ -1,15 +1,21 @@
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 
-import { Button, ButtonGroup, FlexContainer, Icon, Input, Select, Subtitle, useModal } from '@reapit/elements'
-import { TenancyCheckModelPagedResult, TenancyModel } from '@reapit/foundations-ts-definitions'
+import { Button, ButtonGroup, FlexContainer, Icon, InputGroup, Loader, Select, Subtitle } from '@reapit/elements'
+import {
+  DocumentModel,
+  DocumentModelPagedResult,
+  TenancyCheckModelPagedResult,
+  TenancyModel,
+} from '@reapit/foundations-ts-definitions'
 import { useFieldArray, useForm } from 'react-hook-form'
-import { UseMutationResult, useQueryClient } from 'react-query'
+import { InfiniteData, UseMutationResult, useQueryClient } from 'react-query'
 
 import { PatchSingleTenancyCheckParams, useFetchMultipleTenancyCheck } from '../../../platform-api/tenancy-api'
+import { useFetchDocumentTenancyCheck } from '../../../platform-api/document-api'
 
 type PreTenancyListProps = {
   tenancyData: NonNullable<TenancyModel>
-  tenancyChecksData: NonNullable<TenancyCheckModelPagedResult>
+  tenancyChecksData: InfiniteData<TenancyCheckModelPagedResult>
 
   patchSingleTenancyChecks: () => UseMutationResult<any, unknown, PatchSingleTenancyCheckParams, unknown>
   handleTenancyCheckModal: () => {
@@ -33,19 +39,39 @@ type FormProps = {
   checks: ListProps[]
 }
 
-const generateFieldValue = (checksData: PreTenancyListProps['tenancyChecksData']): ListProps[] => {
-  if (checksData && checksData._embedded?.length) {
-    return checksData._embedded
-      .filter((v) => v.type === 'preTenancy')
-      .map(({ id, description, status, _eTag }, index) => ({
-        checkId: id!,
-        index: index!,
-        identity: 'default',
-        type: 'preTenancy',
-        description: description!,
-        status: status!,
-        _eTag: _eTag!,
-      }))
+const generateMultipleTenancyChecks = (checksData: PreTenancyListProps['tenancyChecksData']): ListProps[] => {
+  if (checksData && checksData.pages) {
+    const currentField: ListProps[] = []
+    checksData.pages.forEach((val) => {
+      val!
+        ._embedded!.filter((v) => v.type === 'preTenancy')
+        .map(({ id, description, status, _eTag }, index) => {
+          currentField.push({
+            checkId: id!,
+            index: index!,
+            identity: 'default',
+            type: 'preTenancy',
+            description: description!,
+            status: status!,
+            _eTag: _eTag!,
+          })
+        })
+    })
+    return currentField
+  }
+  return []
+}
+
+const generateMultipleDocumentChecks = (docsData: InfiniteData<DocumentModelPagedResult>): DocumentModel[] => {
+  if (docsData && docsData.pages) {
+    const currentData: DocumentModel[] = []
+    docsData.pages.forEach((val) => {
+      val!._embedded?.map((v: DocumentModel) => {
+        currentData.push(v)
+      })
+    })
+
+    return currentData
   }
   return []
 }
@@ -53,29 +79,32 @@ const generateFieldValue = (checksData: PreTenancyListProps['tenancyChecksData']
 const PreTenancyList: FC<PreTenancyListProps> = ({ tenancyData, tenancyChecksData, handleTenancyCheckModal }) => {
   const queryClient = useQueryClient()
 
-  const queryKey = ['get-single-tenancy-checks', { id: tenancyData.id }]
+  const queryKeyTenancyChecks = ['get-infinite-tenancy-checks', tenancyData.id]
+  const queryKeyMultipleDocumentsTenancyChecks = ['get-infinite-documents-tenancy-checks']
+
+  const infiniteTenancyCheckQC = queryClient.getQueryState(queryKeyTenancyChecks)
+  const infiniteDocsTenanciesChecksQC = queryClient.getQueryState(queryKeyMultipleDocumentsTenancyChecks)
 
   const [deletedFields, setDeletedFields] = useState<ListProps[]>([])
 
-  // * Indicate for resetting fields based passed tenancyChecksData
   const [isDataFetched, setIsDataFetched] = useState<boolean>(false)
 
   const { control, register, watch, handleSubmit, getValues, reset } = useForm<FormProps>({
     defaultValues: {
       name: 'tenancy-checks',
-      checks: generateFieldValue(tenancyChecksData),
+      checks: generateMultipleTenancyChecks(tenancyChecksData),
     },
   })
 
   useEffect(() => {
     if (isDataFetched) {
       reset({
-        checks: generateFieldValue(tenancyChecksData),
+        checks: generateMultipleTenancyChecks(tenancyChecksData),
       })
     }
   }, [isDataFetched])
 
-  const { fields, append, remove } = useFieldArray({
+  const { fields, remove } = useFieldArray({
     control,
     name: 'checks',
   })
@@ -98,20 +127,17 @@ const PreTenancyList: FC<PreTenancyListProps> = ({ tenancyData, tenancyChecksDat
   const { mutateAsync: mutateAsyncDeleteMultipleTenancyCheck, isLoading: isLoadingDeleteMultipleTenancyCheck } =
     deleteMultipleTenancyCheck()
 
-  const isLoading =
-    isLoadingCreateMultipleTenancyCheck || isLoadingUpdateMultipleTenancyCheck || isLoadingDeleteMultipleTenancyCheck
-
-  const handleSubmitClick = async (cb?: () => void) => {
+  const onHandleSubmit = async (cb?: () => void) => {
     try {
       setIsDataFetched(false)
-      const beforeMutate = generateFieldValue(tenancyChecksData)
+      const beforeMutate = generateMultipleTenancyChecks(tenancyChecksData)
       const currentFieldsValue = getValues()
 
       const updateTenancyChecksData = currentFieldsValue.checks
         .filter((curr) => curr.identity === 'default')
         .map((val) => ({
           ...val,
-          eTag: tenancyChecksData._embedded?.[val.index!]._eTag,
+          eTag: val._eTag,
         }))
         .filter((currentCheck) => {
           const beforeIndex = beforeMutate.filter((curr) => curr.checkId === currentCheck.checkId)[0]
@@ -123,40 +149,37 @@ const PreTenancyList: FC<PreTenancyListProps> = ({ tenancyData, tenancyChecksDat
       await mutateAsyncCreateMultipleTenancyCheck(createTenancyChecksData)
       await mutateAsyncDeleteMultipleTenancyCheck(deleteTenancyChecksData)
       await mutateAsyncUpdateMultipleTenancyCheck(updateTenancyChecksData)
-
-      return 'ok'
     } catch (e) {
       console.error(e)
     } finally {
-      await queryClient.invalidateQueries(queryKey)
+      await queryClient.invalidateQueries(queryKeyTenancyChecks)
       setIsDataFetched(true)
       cb && cb()
       setDeletedFields([])
     }
   }
 
-  const { Modal: TenancyCheckModal, ...modalRest } = useModal('modal-root')
+  const fetchDocs = useFetchDocumentTenancyCheck().getMultipleDocumentsTenancyCheck({
+    tenancyChecksId: generateMultipleTenancyChecks(tenancyChecksData).map((v) => v.checkId!),
+  })
+  fetchDocs.hasNextPage && fetchDocs.fetchNextPage()
 
-  const handleTenancyCheckListModal = useCallback(() => {
-    const openModal = () => {
-      const field: ListProps = {
-        description: '',
-        status: 'needed',
-        type: 'preTenancy',
-        identity: 'new',
-      }
-      append(field)
-    }
+  const isOnMutateData = useMemo(() => {
+    return (
+      isLoadingCreateMultipleTenancyCheck || isLoadingUpdateMultipleTenancyCheck || isLoadingDeleteMultipleTenancyCheck
+    )
+  }, [isLoadingCreateMultipleTenancyCheck, isLoadingUpdateMultipleTenancyCheck, isLoadingDeleteMultipleTenancyCheck])
 
-    const closeModal = () => {
-      modalRest.closeModal()
-    }
+  const isDataLoading = useMemo(
+    () => infiniteTenancyCheckQC?.isFetching && infiniteTenancyCheckQC && infiniteDocsTenanciesChecksQC?.isFetching,
+    [infiniteTenancyCheckQC?.isFetching, infiniteDocsTenanciesChecksQC?.isFetching],
+  )
 
-    return {
-      openModal,
-      closeModal,
-    }
-  }, [])
+  const availableDocumentsTenancyCheck = useMemo(
+    () => generateMultipleDocumentChecks(fetchDocs.data!),
+    [infiniteDocsTenanciesChecksQC?.isFetching],
+  )
+  // console.log(availableDocumentsTenancyCheck)
 
   return (
     <>
@@ -165,63 +188,65 @@ const PreTenancyList: FC<PreTenancyListProps> = ({ tenancyData, tenancyChecksDat
           <Subtitle>Pre-Tenancy Checks</Subtitle>
           <ButtonGroup alignment="right">
             <Button
-              onClick={handleSubmit(() => handleSubmitClick())}
+              onClick={handleSubmit(() => onHandleSubmit())}
               intent="primary"
-              loading={isLoading}
-              disabled={isLoading}
+              loading={isOnMutateData || isDataLoading}
+              disabled={isOnMutateData || isDataLoading}
             >
               Save
             </Button>
-            <Button onClick={handleTenancyCheckListModal().openModal} loading={isLoading} disabled={isLoading}>
-              Add Fields
-            </Button>
           </ButtonGroup>
         </FlexContainer>
-        <div className="el-mt6">
-          {controlledFields.map((tenancyCheck, index) => {
-            return (
-              <FlexContainer isFlexJustifyBetween isFlexAlignCenter key={tenancyCheck.id}>
-                <FlexContainer isFlexAlignCenter className="el-w7">
-                  <Input type="text" className="el-w10" {...register(`checks.${index}.description`)} />
-                  <Select {...register(`checks.${index}.status`)}>
-                    <option value="needed">Needed</option>
-                    <option value="notNeeded">Not Needed</option>
-                    <option value="arranged">Sent / Arranging</option>
-                    <option value="completed">Completed</option>
-                  </Select>
+        {isDataLoading ? (
+          <Loader label="please wait.." fullPage />
+        ) : (
+          <div className="el-mt6">
+            {controlledFields.map((tenancyCheck, index) => {
+              const isInputDisable =
+                getValues(`checks.${index}.status`) === 'completed' ||
+                getValues(`checks.${index}.status`) === 'notNeeded'
+              const isHaveDocument = availableDocumentsTenancyCheck.some((v) => v.associatedId === tenancyCheck.checkId)
+
+              return (
+                <FlexContainer isFlexJustifyBetween isFlexAlignCenter key={tenancyCheck.id}>
+                  <FlexContainer isFlexAlignCenter className="el-w7">
+                    <InputGroup
+                      type="text"
+                      className="el-w10"
+                      {...register(`checks.${index}.description`)}
+                      disabled={isInputDisable}
+                      intent="success"
+                      icon={getValues(`checks.${index}.status`) === 'completed' ? 'checkSystem' : undefined}
+                    />
+                    <Select {...register(`checks.${index}.status`)}>
+                      <option value="needed">Needed</option>
+                      <option value="notNeeded">Not Needed</option>
+                      <option value="arranged">Sent / Arranging</option>
+                      <option value="completed">Completed</option>
+                    </Select>
+                  </FlexContainer>
+                  <FlexContainer isFlexAlignCenter className="el-w5" isFlexJustifyEnd>
+                    <Icon
+                      icon="linkSystem"
+                      className="el-mr5"
+                      intent={isHaveDocument ? 'secondary' : 'low'}
+                      onClick={() => handleTenancyCheckModal().openModal(tenancyCheck as ListProps)}
+                    />
+                    <Icon
+                      icon="closeSystem"
+                      intent="danger"
+                      onClick={() => {
+                        setDeletedFields((prev) => [...prev, tenancyCheck])
+                        remove(index)
+                      }}
+                    />
+                  </FlexContainer>
                 </FlexContainer>
-                <FlexContainer isFlexAlignCenter className="el-w5" isFlexJustifyEnd>
-                  <Icon
-                    icon="linkSystem"
-                    className="el-mr5"
-                    onClick={async () => {
-                      if (tenancyCheck.checkId) {
-                        handleTenancyCheckModal().openModal(tenancyCheck as ListProps)
-                      } else {
-                        console.log('before')
-                        await handleSubmitClick()
-                        console.log('after')
-                        // create
-                      }
-                    }}
-                  />
-                  <Icon
-                    icon="closeSystem"
-                    intent="danger"
-                    onClick={() => {
-                      setDeletedFields((prev) => [...prev, tenancyCheck])
-                      remove(index)
-                    }}
-                  />
-                </FlexContainer>
-              </FlexContainer>
-            )
-          })}
-        </div>
+              )
+            })}
+          </div>
+        )}
       </FlexContainer>
-      <TenancyCheckModal>
-        <h1>Add here</h1>
-      </TenancyCheckModal>
     </>
   )
 }
