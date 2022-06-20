@@ -48,26 +48,33 @@ const ModalDocumentDrop: FC<ModalDocumentDropProps> = ({
   const { mutateAsync, isLoading } = createDocument
 
   const submitDataValue = async () => {
-    const convertedFile = await convertToBase64(uploadedDocument[0])
+    try {
+      const convertedFile = await convertToBase64(uploadedDocument[0])
 
-    await mutateAsync(
-      {
-        typeId: getValues('docType'),
-        fileData: convertedFile,
-        name: `${getValues('docName')}.${getValues('docExtension')}`,
-      },
-      {
-        onSuccess: () => {
-          queryClient.invalidateQueries(['tenancy-check-document', tenancyCheckId])
-          console.log('success upload')
+      await mutateAsync(
+        {
+          typeId: getValues('docType'),
+          fileData: convertedFile,
+          name: `${getValues('docName')}.${getValues('docExtension')}`,
         },
-        onError: () => {
-          console.log('error')
+        {
+          onSuccess: () => {
+            queryClient.invalidateQueries(['tenancy-check-document', tenancyCheckId])
+          },
+          onError: () => {
+            console.log('error')
+          },
         },
-      },
-    )
-    handleDroppedDocumentModal().closeDroppedDocumentModal()
+      )
+    } catch (e) {
+      console.error(e)
+    } finally {
+      queryClient.invalidateQueries(['get-infinite-documents-tenancy-checks'])
+      handleDroppedDocumentModal().closeDroppedDocumentModal()
+    }
   }
+
+  // TODO: investigate fileUrl param
 
   return (
     <>

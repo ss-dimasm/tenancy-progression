@@ -4,7 +4,7 @@ import {
   TenancyModel,
   TenancyModelPagedResult,
 } from '@reapit/foundations-ts-definitions'
-import { useMutation, useQuery } from 'react-query'
+import { FetchNextPageOptions, useInfiniteQuery, useMutation, useQuery } from 'react-query'
 import { stringify } from 'qs'
 
 import { URLS } from '../constants/api'
@@ -73,14 +73,28 @@ export const useFetchSingleTenancy = (params: TenancySingleResultQuery) => {
 
   // * get single tenancy check
   const getSingleTenancyChecks = (additionalParams?: PaginatedParams) => {
-    return useQuery(['get-single-tenancy-checks', params], async () => {
-      const { data } = await Axios.get<TenancyCheckModelPagedResult>(`${URLS.TENANCIES}${params.id}/checks`, {
-        params: {
-          ...additionalParams,
+    return useInfiniteQuery(
+      ['get-infinite-tenancy-checks', params.id],
+      async (paramsInfiniteQuery?: FetchNextPageOptions) => {
+        const { data } = await Axios.get<TenancyCheckModelPagedResult>(`${URLS.TENANCIES}${params.id}/checks`, {
+          params: {
+            ...additionalParams,
+            pageNumber: paramsInfiniteQuery?.pageParam,
+          },
+        })
+        return data
+      },
+      {
+        cacheTime: Infinity,
+        keepPreviousData: false,
+        getNextPageParam: (lastPage) => {
+          if (lastPage!._links!.next) {
+            return lastPage?.pageNumber! + 1
+          }
+          return undefined
         },
-      })
-      return data
-    })
+      },
+    )
   }
 
   // * post single tenancy checks

@@ -26,6 +26,7 @@ const ModalDeleteDocument: FC<ModalDeleteDocumentProps> = ({ documentData, close
       },
       onSettled: () => {
         queryClient.invalidateQueries(['tenancy-check-document', documentData.associatedId])
+        queryClient.invalidateQueries(['get-infinite-documents-tenancy-checks'])
       },
     })
   }

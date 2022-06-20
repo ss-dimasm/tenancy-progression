@@ -1,11 +1,12 @@
 import { DocumentModelPagedResult } from '@reapit/foundations-ts-definitions'
-import { useMutation, useQuery } from 'react-query'
+import { stringify } from 'qs'
+import { FetchNextPageOptions, useInfiniteQuery, useMutation, useQuery } from 'react-query'
 
 import { URLS } from '../constants/api'
 import { Axios } from '../core/axios'
 
 export const useFetchDocumentTenancyCheck = () => {
-  const getDocumentTenancyCheck = (tenancyCheckIdParams: string | null) => {
+  const getDocumentTenancyCheck = (tenancyCheckIdParams: string[] | null) => {
     return useQuery(
       ['tenancy-check-document', tenancyCheckIdParams],
       async () => {
@@ -14,6 +15,10 @@ export const useFetchDocumentTenancyCheck = () => {
             associatedType: 'tenancyCheck',
             associatedId: tenancyCheckIdParams,
           },
+          paramsSerializer: (params) =>
+            stringify(params, {
+              arrayFormat: 'repeat',
+            }),
         })
         return data
       },
@@ -23,6 +28,30 @@ export const useFetchDocumentTenancyCheck = () => {
     )
   }
 
+  const getMultipleDocumentsTenancyCheck = ({ tenancyChecksId }: { tenancyChecksId: string[] }) => {
+    return useInfiniteQuery(
+      ['get-infinite-documents-tenancy-checks'],
+      async (paramsInfiniteQuery: FetchNextPageOptions) => {
+        const { data } = await Axios.get<DocumentModelPagedResult>(URLS.DOCUMENTS, {
+          params: {
+            associatedType: 'tenancyCheck',
+            associatedId: tenancyChecksId,
+            pageNumber: paramsInfiniteQuery?.pageParam,
+          },
+        })
+
+        return data
+      },
+      {
+        getNextPageParam: (lastPage) => {
+          if (lastPage!._links!.next) {
+            return lastPage?.pageNumber! + 1
+          }
+          return undefined
+        },
+      },
+    )
+  }
   const createDocumentTenancyCheck = (tenancyCheckIdParams: string) => {
     return useMutation(
       ['create-document-tenancy', tenancyCheckIdParams],
@@ -95,6 +124,7 @@ export const useFetchDocumentTenancyCheck = () => {
 
   return {
     getDocumentTenancyCheck,
+    getMultipleDocumentsTenancyCheck,
     createDocumentTenancyCheck,
     deleteDocumentTenancyCheck,
     editDocumentTenancyCheck,
